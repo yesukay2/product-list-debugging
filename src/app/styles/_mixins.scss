@@ -1,0 +1,36 @@
+
+@use 'variables' as *;
+
+@mixin flex($direction:row, $justify:flex-start, $align:stretch, $gap:0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin TextPreset1 {
+  font-size: 40px;
+  line-height: 120%;
+  font-family: $font-bold;
+}
+@mixin TextPreset2 {
+  font-size: 24px;
+  line-height: 125%;
+  font-family: $font-bold;
+}
+@mixin TextPreset3 {
+  font-size: 16px;
+  line-height: 150%;
+  font-family: $font-semibold;
+}
+@mixin TextPreset4 {
+  font-size: 14px;
+  line-height: 150%;
+  font-family: $font-regular
+}
+@mixin TextPreset4Bold {
+  font-size: 14px;
+  line-height: 150%;
+  font-family: $font-semibold;
+}

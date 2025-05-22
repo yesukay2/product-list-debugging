@@ -1,12 +1,33 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import desseretData from '../../public/data.json';
+import { AddToCartComponent } from "./components/add-to-cart/add-to-cart.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
-})
+});
+
+// interface
+interface Dessert {
+  image: DessertImages;
+  name: string;
+  category: string;
+  price: number;
+};
+
+interface DessertImages {
+  thumbnail: string;
+  mobile: string;
+  tablet: string;
+  desktop: string;
+};
+
 export class AppComponent {
-  title = 'product-list-with-cart';
-}
+  title = 'Product list';
+  desserts:Dessert[] | null = null;
+
+  constructor() {
+    this.desserts = desseretData;
+  };
+};

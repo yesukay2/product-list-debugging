@@ -1,0 +1,49 @@
+@use 'mixins' as *;
+@use 'variables' as *;
+
+.add-to-cart-container {
+  width: 160px;
+  margin: -1.2rem auto;
+}
+.add-to-cart-default, .quantity-gauge {
+  @include flex(row, flex-start, stretch, 0.5rem);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  width: 100%;
+  
+}
+.add-to-cart-default {
+  @include flex(row, center, stretch, 0.5rem);
+  padding: 0.5rem 1rem;
+  border: 1px solid $rose-400;
+  background-color: $white;
+  border-radius: 50px;
+
+  &:hover {
+    color: $red;
+    border-color: $red;
+    transition: all 300ms ease-in-out;
+  }
+
+  p {
+    @include TextPreset4Bold;
+  }
+
+}
+
+.quantity-gauge {
+  @include flex(row, space-between, center);
+  @include TextPreset4Bold;
+  background-color: $red;
+  color: $white;
+  cursor: default;
+
+  
+  button {
+    @include flex(row, center, center, 0);
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    border-color: $white;
+  }
+}
