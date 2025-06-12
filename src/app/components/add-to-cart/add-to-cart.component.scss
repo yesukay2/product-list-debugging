@@ -1,16 +1,16 @@
-@use 'mixins' as *;
-@use 'variables' as *;
+@use "mixins" as *;
+@use "variables" as *;
 
 .add-to-cart-container {
   width: 160px;
   margin: -1.2rem auto;
 }
-.add-to-cart-default, .quantity-gauge {
+.add-to-cart-default,
+.quantity-gauge {
   @include flex(row, flex-start, stretch, 0.5rem);
   padding: 0.5rem 1rem;
   border-radius: 50px;
   width: 100%;
-  
 }
 .add-to-cart-default {
   @include flex(row, center, stretch, 0.5rem);
@@ -28,7 +28,6 @@
   p {
     @include TextPreset4Bold;
   }
-
 }
 
 .quantity-gauge {
@@ -38,7 +37,6 @@
   color: $white;
   cursor: default;
 
-  
   button {
     @include flex(row, center, center, 0);
     width: 20px;

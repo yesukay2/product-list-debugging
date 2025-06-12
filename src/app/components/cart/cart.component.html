@@ -1,0 +1,94 @@
+<div class="cart-container">
+  <h2>Your Cart ({{ cartItems.length }})</h2>
+
+  @if (cartItems.length > 0) {
+  <div class="cart-items">
+    @for (item of cartItems; track item.name) {
+    <div class="cart-item">
+      <div class="item-details">
+        <span class="name">{{ item.name }}</span>
+        <div>
+          <span class="quantity">{{ item.quantity }}x</span>
+          <span class="price">&#64; ${{ item.price.toFixed(2) }}</span>
+          <span class="total">${{ item.total.toFixed(2) }}</span>
+        </div>
+      </div>
+      <button class="delete-btn" (click)="removeItem(item.name)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="10"
+          height="10"
+          fill="none"
+          viewBox="0 0 10 10"
+        >
+          <path stroke="#E2E2E2" stroke-width="2" d="M1 9l8-8M9 9L1 1" />
+        </svg>
+      </button>
+    </div>
+    }
+    <div class="cart-total">
+      <span>Order Total</span>
+      <span>${{ total }}</span>
+    </div>
+    <div class="carbon-neutral-delivery">
+      <img src="images/icon-carbon-neutral.svg" alt="Carbon Neutral Icon" />
+      <p>This is a <strong>carbon-neutral</strong> delivery</p>
+    </div>
+    <button class="confirm-order-btn" (click)="confirmOrder()">
+      Confirm Order
+    </button>
+  </div>
+  } @else {
+  <div class="content">
+    <div class="empty-cart-content">
+      <img src="images/illustration-empty-cart.svg" alt="empty cart svg" />
+      <p class="empty-cart-description">Your added items will appear here</p>
+    </div>
+  </div>
+  } @if (showModal) {
+  <div class="modal-overlay" (click)="closeModal()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#1EA575"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-circle-check-icon lucide-circle-check"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <path d="m9 12 2 2 4-4" />
+        </svg>
+        <h3>Order Confirmed</h3>
+        <p>We hope you enjoy your food!</p>
+      </div>
+      <div class="modal-items">
+        @for (item of cartItems; track item.name) {
+        <div class="modal-item">
+          <img [src]="item.image.thumbnail" [alt]="item.name" />
+          <div class="modal-item-details">
+            <span class="name">{{ item.name }}</span>
+            <div>
+              <span class="quantity">{{ item.quantity }}x</span>
+              <span class="price">&#64; ${{ item.price.toFixed(2) }}</span>
+            </div>
+          </div>
+          <span class="total">${{ item.total.toFixed(2) }}</span>
+        </div>
+        }
+      </div>
+      <div class="modal-total">
+        <span>Order Total</span>
+        <span>${{ total }}</span>
+      </div>
+      <!-- <button class="start-new-order-btn" (click)="startNewOrder()">Start New Order</button> -->
+      <button class="start-new-order-btn">Start New Order</button>
+    </div>
+  </div>
+  }
+</div>

@@ -1,5 +1,5 @@
-@use 'mixins' as *;
-@use 'variables' as *;
+@use "mixins" as *;
+@use "variables" as *;
 
 :host {
   width: 100%;
@@ -10,6 +10,10 @@ main {
   width: min(1316px, 90%);
   margin: auto;
   padding: 1rem 0;
+
+  @media (max-width: 768px) {
+    @include flex(column, flex-start, stretch, 2rem);
+  }
   // flex-wrap: wrap;
 }
 
@@ -17,7 +21,7 @@ main {
   @include flex(column, flex-start, stretch, 2rem);
   width: 100%;
   height: 100%;
-  
+
   h1 {
     @include TextPreset1;
     color: $rose-900;
@@ -31,54 +35,9 @@ main {
   width: 100%;
   height: 100%;
 
-  .dessert-item {
-    @include flex(column, flex-start, stretch, 2rem);
-    width: 250px;
-    height: fit-content;
-
-    .item-image-add-to-cart {
-      @include flex(column);
-
-      img {
-        aspect-ratio: 1;
-        border-radius: 10px;
-        object-fit: cover;
-      }
-    }
-
-    // .add-to-cart-container button {
-    //   @include flex(row, flex-start, stretch, 0.5rem);
-    //   padding: 0.5rem 1rem;
-    //   border: 1px solid $rose-400;
-    //   background-color: $white;
-    //   border-radius: 50px;
-    //   width: fit-content;
-    //   margin: -1.2rem auto;
-    //   cursor: pointer;
-
-    //   &:hover {
-    //     color: $red;
-    //     border-color: $red;
-    //     transition: all 300ms ease-in-out;
-    //   }
-
-    //   p {
-    //     @include TextPreset4Bold;
-    //   }
-    // }
-
-    // item info
-    .item-info {
-      .category {
-        @include TextPreset4;
-      }
-      .name, .price {
-        @include TextPreset3;
-      }
-      .price {
-        color: $red;
-      }
-    }
+  @media (max-width: 768px) {
+    @include flex(row, flex-start, stretch, 1.5rem);
+    flex-wrap: wrap;
   }
 }
 // cart section
@@ -87,6 +46,12 @@ main {
   height: fit-content;
   flex: 1 0 380px;
   padding: 1rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    flex: unset;
+    padding: 0;
+  }
 
   h2 {
     @include TextPreset2;
@@ -100,7 +65,7 @@ main {
     .empty-cart-content {
       @include flex(column, center, center);
       width: 100%;
-      
+
       p {
         @include TextPreset4Bold;
         color: $rose-500;
