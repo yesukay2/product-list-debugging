@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import desseretData from '../../public/data.json';
-import { AddToCartComponent } from "./components/add-to-cart/add-to-cart.component";
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
-});
+import { AddToCartComponent } from './components/add-to-cart/add-to-cart.component';
+import { ProductService } from './services/product.service';
+import { ProductCardComponent } from './components/item-card/item-card.component';
+import { CartComponent } from './components/cart/cart.component';
 
 // interface
 interface Dessert {
@@ -14,20 +10,46 @@ interface Dessert {
   name: string;
   category: string;
   price: number;
-};
+}
 
 interface DessertImages {
   thumbnail: string;
   mobile: string;
   tablet: string;
   desktop: string;
-};
-
+}
+@Component({
+  selector: 'app-root',
+  imports: [ProductCardComponent, CartComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+})
 export class AppComponent {
   title = 'Product list';
-  desserts:Dessert[] | null = null;
+  desserts: Dessert[] = [];
+  isActive = false;
+  removedItemName: string | null = null;
 
-  constructor() {
-    this.desserts = desseretData;
-  };
-};
+  constructor(private productService: ProductService) {}
+
+  ngOnInit() {
+    this.productService.product$.subscribe((products) => {
+      this.desserts = products;
+    });
+  }
+
+  onRemoveItem(name: string) {
+    console.log('Item removed:', name);
+    this.removedItemName = name;
+    setTimeout(() => {
+      this.removedItemName = null;
+    }, 100);
+  }
+
+  handleRemoveItem(name: string) {
+    this.removedItemName = name;
+    setTimeout(() => {
+      this.removedItemName = null;
+    }, 100);
+  }
+}

@@ -1,0 +1,20 @@
+<div class="dessert-item">
+  <section class="item-image-add-to-cart">
+    <img
+      [class.in-cart]="isInCart"
+      src="{{ dessert.image.desktop }}"
+      alt="{{ dessert.name }}"
+      class="item-image"
+    />
+    <app-add-to-cart
+      [productName]="dessert.name"
+      [removedItem]="removedItem"
+      (isAddedToCartChange)="isInCart = $event"
+    />
+  </section>
+  <section class="item-info">
+    <p class="category">{{ dessert.category }}</p>
+    <p class="name">{{ dessert.name }}</p>
+    <p class="price">${{ dessert.price }}</p>
+  </section>
+</div>
