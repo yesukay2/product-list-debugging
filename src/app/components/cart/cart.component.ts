@@ -57,8 +57,7 @@ export class CartComponent implements OnInit {
     this.showModal = false;
   }
 
-  // startNewOrder() {
-  //   this.cartService.clearCart();
-  //   this.showModal = false;
-  // }
+  startNewOrder() {
+    this.cartService.clearCart();
+  }
 }

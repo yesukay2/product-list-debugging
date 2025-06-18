@@ -80,4 +80,8 @@ export class CartService {
     }, 0);
     return total;
   }
+
+  clearCart() {
+    this.cartSubject.next([]);
+  }
 }

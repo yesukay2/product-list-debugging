@@ -27,7 +27,6 @@ interface DessertImages {
 export class AppComponent {
   title = 'Product list';
   desserts: Dessert[] = [];
-  isActive = false;
   removedItemName: string | null = null;
 
   constructor(private productService: ProductService) {}
@@ -39,7 +38,6 @@ export class AppComponent {
   }
 
   onRemoveItem(name: string) {
-    console.log('Item removed:', name);
     this.removedItemName = name;
     setTimeout(() => {
       this.removedItemName = null;
